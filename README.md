@@ -91,7 +91,7 @@ Each key is associated to an array, composed by:
 ## Release History
 
 * 0.0.1
-**INITIAL RELEASE**
+- **INITIAL RELEASE**
 
 ## Authors and Copyright
 
