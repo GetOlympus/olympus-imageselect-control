@@ -1,0 +1,33 @@
+{% extends template_path %}
+
+{% block class %}imageselect{% endblock %}
+{% block description %}{{ description|raw }}{% endblock %}
+{% block id %}{{ id }}{% endblock %}
+{% block label %}{{ label|raw }}{% endblock %}
+
+{% block control %}
+    <input type="hidden" name="{{ id|e }}" value="" {{ link }} />
+
+    {% if choices %}
+        {% set num = 0 %}
+        {% set square = vars.multiple ? '[]' : '' %}
+        {% set type = vars.multiple ? 'checkbox' : 'radio' %}
+
+        {% for k, option in choices if option %}
+            {% set identifier = id ~ '-' ~ num %}
+            {% set selected = k in value ? ' checked="checked"' : '' %}
+
+            <label for="{{ identifier }}">
+                <img src="{{ option.image }}" alt="" />
+                <span>
+                    <input type="{{ type }}" name="{{ identifier ~ square }}" id="{{ identifier }}" value="{{ k }}"{{ selected }} />
+                    {{ option.label|raw }}
+                </span>
+            </label>
+
+            {% set num = num + 1 %}
+        {% endfor %}
+    {% else %}
+        {{ vars.t_no_options|raw }}
+    {% endif %}
+{% endblock %}
