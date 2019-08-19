@@ -9,11 +9,17 @@
 @white: #ffffff;
 
 .olz-field.imageselect {
+    .group {
+        font-size: 0;
+    }
+
     label {
+        display: block;
+        font-size: 13px;
         margin-bottom: 5px;
         position: relative;
         vertical-align: bottom;
-        width: 200px;
+        width: 100%;
 
         img {
             display: block;
@@ -30,5 +36,11 @@
             position: absolute;
             z-index: 2;
         }
+    }
+
+
+    .group.col-50 label {
+        display: inline-block;
+        width: 50%;
     }
 }

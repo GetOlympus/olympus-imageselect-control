@@ -31,6 +31,7 @@ $wp_customize->add_setting('my_imageselect_control_id',[
 $wp_customize->add_control(new ImageSelect($wp_customize, 'my_imageselect_control_id', [
     'label'       => 'Select a Minion that you may know',
     'description' => 'A very important question! Pay attention to it ;)',
+    'column'      => 2,
     'multiple'    => false,
     'section'     => 'my_custom_controls_section',
     'choices'     => [
@@ -79,6 +80,7 @@ The variables definition depends on `multiple` value:
 | ------------- | ------- | ------------------------ | --------------- |
 | `label`       | String  | *empty* (optional)       | The label that will be displayed. |
 | `description` | String  | *empty* (optional)       | The description to display under the label. |
+| `column`      | Integer | `1` (optional)           | The number of columns to display on each line (can be 1 or 2) |
 | `multiple`    | Boolean | `false` (optional)       | The setting to let user select one or multiple choices. |
 | `section`     | String  | *empty* (required)       | The Section where there control should appear. |
 | `choices`     | Array   | *empty* (required)       | The list of choices with uniq keys. |
@@ -89,6 +91,9 @@ Each key is associated to an array, composed by:
 - `image` (required). URL of the image
 
 ## Release History
+
+* 0.0.2
+- [x] ADD: new column and multiple attributes
 
 * 0.0.1
 - [x] **INITIAL RELEASE**

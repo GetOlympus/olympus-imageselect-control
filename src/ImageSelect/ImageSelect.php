@@ -40,14 +40,14 @@ class ImageSelect extends Control
     protected $textdomain = 'imageselectcontrol';
 
     /**
+     * @var integer
+     */
+    public $column = 1;
+
+    /**
      * @var boolean
      */
     public $multiple = false;
-
-    /**
-     * @var string
-     */
-    public $type = 'image-select';
 
     /**
      * Prepare variables.
@@ -61,6 +61,7 @@ class ImageSelect extends Control
         // Update vars
         return [
             't_no_options' => Translate::t('imageselect.errors.no_options', $this->textdomain),
+            'column'       => 2 === $this->column ? 2 : 1,
             'multiple'     => $this->multiple,
             'value'        => !is_array($value) ? [$value] : $value,
         ];

@@ -10,24 +10,26 @@
 
     {% if choices %}
         {% set num = 0 %}
-        {% set square = vars.multiple ? '[]' : '' %}
-        {% set type = vars.multiple ? 'checkbox' : 'radio' %}
+        {% set square = multiple ? '[]' : '' %}
+        {% set type = multiple ? 'checkbox' : 'radio' %}
 
-        {% for k, option in choices if option %}
-            {% set identifier = id ~ '-' ~ num %}
-            {% set selected = k in value ? ' checked="checked"' : '' %}
+        <div class="group col-{{ 2 == column ? '50' : '100' }}">
+            {% for k, option in choices if option %}
+                {% set identifier = id ~ '-' ~ num %}
+                {% set selected = k in value ? ' checked="checked"' : '' %}
 
-            <label for="{{ identifier }}">
-                <img src="{{ option.image }}" alt="" />
-                <span>
-                    <input type="{{ type }}" name="{{ identifier ~ square }}" id="{{ identifier }}" value="{{ k }}"{{ selected }} />
-                    {{ option.label|raw }}
-                </span>
-            </label>
+                <label for="{{ identifier }}">
+                    <img src="{{ option.image }}" alt="" />
+                    <span>
+                        <input type="{{ type }}" name="{{ id ~ square }}" id="{{ identifier }}" value="{{ k }}"{{ selected }} />
+                        {{ option.label|raw }}
+                    </span>
+                </label>
 
-            {% set num = num + 1 %}
-        {% endfor %}
+                {% set num = num + 1 %}
+            {% endfor %}
+        </div>
     {% else %}
-        {{ vars.t_no_options|raw }}
+        {{ t_no_options|raw }}
     {% endif %}
 {% endblock %}
